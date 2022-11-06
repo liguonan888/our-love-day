@@ -47,9 +47,9 @@ function App() {
       ctx.strokeStyle='#c00';
       let timer: number;
   
-       slowly();
+       drawPoint();
 
-      function slowly() {
+      function drawPoint() {
         console.log('drawing');
         
           x = pointArr[idx][0];
@@ -62,7 +62,7 @@ function App() {
           } else {
               idx++;
               clearTimeout(timer);
-              timer = setTimeout(()=>slowly(),16.66666667);
+              timer = setTimeout(()=>drawPoint(),16.66666667);
               ctx.stroke();
           }
       }
