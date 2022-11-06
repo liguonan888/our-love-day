@@ -73,7 +73,7 @@ function App() {
 
   return (
     <div className={styles.app}>
-      <canvas id={styles['canvas-love']}width="700px" height="700px" ref={loveRef}></canvas>
+      <canvas id={styles['canvas-love']} width="700px" height="700px" ref={loveRef}></canvas>
     </div>
   )
 }
