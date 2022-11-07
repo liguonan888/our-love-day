@@ -6,13 +6,16 @@ function App() {
   const loveRef = useRef<HTMLCanvasElement>(null);
 
   const initialLoveAnimation = (ele: HTMLCanvasElement) => {
+
     // console.log(ele.getBoundingClientRect())
-    const {width, height} =ele.getBoundingClientRect()
+    const {innerWidth, innerHeight} = window
+    ele.width =innerWidth
+    ele.height = innerHeight
     const ctx: CanvasRenderingContext2D |null  = ele.getContext('2d');
     if(ctx){
        ctx.lineWidth = 2
        ctx.resetTransform()
-       ctx.translate(width/ 2, height /2);
+       ctx.translate(innerWidth/ 2, innerHeight /2);
        beginDraw(ctx)
     }
    
@@ -40,6 +43,7 @@ function App() {
           t+=vt;
           pointArr.push([x*size,-y*size]);
       }
+      
       ctx.moveTo(pointArr[0][0],pointArr[0][1]);
   
       let idx = 2;
@@ -73,7 +77,8 @@ function App() {
 
   return (
     <div className={styles.app}>
-      <canvas id={styles['canvas-love']} width="700px" height="700px" ref={loveRef}></canvas>
+      <canvas id={styles['canvas-love']}  ref={loveRef}></canvas>
+      
     </div>
   )
 }
