@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 function Vector(a, b) {
 	this.x = a;
 	this.y = b
@@ -99,10 +101,11 @@ Bloom.prototype = {
 	}
 };
 
-function Garden(a, b) {
+function Garden(a: CanvasRenderingContext2D, b:HTMLCanvasElement) :Garden{
 	this.blooms = [];
 	this.element = b;
-	this.ctx = a
+	this.ctx = a;
+
 }
 
 Garden.prototype = {

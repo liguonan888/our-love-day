@@ -11,20 +11,20 @@ function App() {
 
     const gardenCanvas: HTMLCanvasElement | null =
       document.querySelector("#canvas-love");
-    let garden = null;
+    let garden;
     if (gardenCanvas) {
-      const width = loveHeart?.getBoundingClientRect().width;
-      const height = loveHeart?.getBoundingClientRect().height;
+      const width = loveHeart?.getBoundingClientRect().width||1000;
+      const height = loveHeart?.getBoundingClientRect().height||600;
       gardenCanvas.width = width
       gardenCanvas.height =height;
       const gardenCtx = gardenCanvas.getContext("2d");
       if (gardenCtx) {
         gardenCtx.translate(width/2, height/2)
         gardenCtx.globalCompositeOperation = "lighter";
-        garden = new Garden(gardenCtx, gardenCanvas);
+        garden = new (Garden as any)(gardenCtx, gardenCanvas);
 
         setInterval(function () {
-          garden.render();
+          garden?.render()
         }, Garden.options.growSpeed);
       }
       function getHeartPoint(c) {
@@ -37,10 +37,11 @@ function App() {
         ]
       }
 
-      function startHeartAnimation() {
+      function startHeartAnimation() { 
         var c = 50;
         var d = 10;
-        var b = new Array();
+        var b = [];
+
         var a = setInterval(function () {
           var h = getHeartPoint(d);
           var e = true;
