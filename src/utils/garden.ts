@@ -140,7 +140,7 @@ Garden.options = {
 	bloomRadius: {min: 8, max: 15},
 	density: 10,
 	growSpeed: 1000 / 60,
-	color: {rmin: 125, rmax: 255, gmin: 0, gmax: 2, bmin: 0, bmax: 1, opacity: 0.2},
+	color: {rmin: 125, rmax: 255, gmin: 0, gmax: 2, bmin: 0, bmax: 100, opacity: 0.2},
 	tanAngle: 60
 };
 Garden.random = function (b, a) {
