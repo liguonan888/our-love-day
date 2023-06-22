@@ -5,7 +5,7 @@ import { Garden } from "./utils/garden";
 import { fabric } from "fabric";
 function App() {
   const loveRef = useRef<HTMLCanvasElement>(null);
-
+const [ctx,setCtx] =useState<CanvasRenderingContext2D>(null)
   function init() {
     const loveHeart = document.querySelector("#loveHeart");
 
@@ -19,6 +19,7 @@ function App() {
       gardenCanvas.height =height;
       const gardenCtx = gardenCanvas.getContext("2d");
       if (gardenCtx) {
+        setCtx(gardenCtx)
         gardenCtx.translate(width/2, height/2)
         gardenCtx.globalCompositeOperation = "lighter";
         garden = new (Garden as any)(gardenCtx, gardenCanvas);
@@ -70,8 +71,11 @@ function App() {
       startHeartAnimation();
     }
   }
-  useEffect(() => {
+  useEffect(() => { 
     loveRef.current && init();
+    return ()=>{
+      
+    }
   }, [loveRef.current]);
 
   return (
